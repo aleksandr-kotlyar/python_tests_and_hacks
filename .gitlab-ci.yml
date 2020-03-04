@@ -1,4 +1,4 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome-java-13.0.2-allurecli
 
 stages:
   - code_style
