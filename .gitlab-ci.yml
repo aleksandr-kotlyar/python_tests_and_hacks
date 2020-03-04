@@ -4,6 +4,7 @@ stages:
   - code_style
   - dev
   - test
+  - generate-reports
   - slack-notification
   - upload-allure-reports
 
@@ -69,6 +70,12 @@ Pylint:
       - reports
   tags:
     - gitlab-org
+
+allure-reports:
+  stage: generate-reports
+  script:
+    - allure generate reports
+    - ls -la
 
   # .job_allure_reports_upload_template:
   ## JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
