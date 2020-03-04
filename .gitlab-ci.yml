@@ -84,11 +84,13 @@ allure-reports:
 pages:
   image: ruby:2.7
   stage: upload-allure-reports
+  allow_failure: true
   before_script:
     - dt=$(date +%F)
-    - allure_path=${CI_COMMIT_REF_NAME}/${dt}_${CI_PIPELINE_ID}/
+    - allure_path=${CI_COMMIT_REF_NAME}/${dt}_${CI_PIPELINE_ID}
+    - mkdir ${CI_COMMIT_REF_NAME}
     - mkdir ${allure_path}
-    - mv allure-report /${allure_path}
+    - mv allure-report ${allure_path}
   script:
     - bundle install
     - bundle exec jekyll build -d public/${allure_path}
