@@ -81,6 +81,17 @@ allure-reports:
     paths:
       - allure-report
 
+pages:
+  image: ruby:2.7
+  stage: upload-allure-reports
+  before_script:
+    - mv allure-report /${CI_COMMIT_REF_NAME}/(date +%F)_{CI_PIPELINE_ID}/
+  script:
+    - bundle install
+    - bundle exec jekyll build -d public/${CI_COMMIT_REF_NAME}/(date +%F)_{CI_PIPELINE_ID}/
+  artifacts:
+    paths:
+      - public
 
   # .job_allure_reports_upload_template:
   ## JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
