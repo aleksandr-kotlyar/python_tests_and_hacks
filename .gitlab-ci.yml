@@ -76,6 +76,11 @@ allure-reports:
   script:
     - allure generate reports
     - ls -la
+  artifacts:
+    when: always
+    paths:
+      - allure-report
+
 
   # .job_allure_reports_upload_template:
   ## JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
