@@ -85,8 +85,9 @@ pages:
   image: ruby:2.7
   stage: upload-allure-reports
   before_script:
-    - dt=(date +%F)
+    - dt=$(date +%F)
     - allure_path=${CI_COMMIT_REF_NAME}/${dt}_${CI_PIPELINE_ID}/
+    - mkdir ${allure_path}
     - mv allure-report /${allure_path}
   script:
     - bundle install
