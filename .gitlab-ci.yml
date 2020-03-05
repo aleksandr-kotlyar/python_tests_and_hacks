@@ -93,7 +93,7 @@ pages:
     - mkdir ${CI_COMMIT_REF_NAME}
     - mkdir ${allure_path}
   script:
-    - mv allure-report /public/${allure_path}
+    - mv allure-report ${allure_path}
   artifacts:
     paths:
       - public
