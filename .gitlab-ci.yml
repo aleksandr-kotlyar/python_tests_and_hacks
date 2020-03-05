@@ -33,6 +33,7 @@ variables:
     - gitlab-org
 
 Pylint:
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster
   allow_failure: true
   extends: .linter_template
   script:
@@ -72,6 +73,7 @@ Pylint:
     - gitlab-org
 
 allure-reports:
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster
   stage: generate-reports
   script:
     - allure generate reports
@@ -82,7 +84,7 @@ allure-reports:
       - allure-report
 
 pages:
-  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:latest
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster
   stage: upload-allure-reports
   allow_failure: true
   before_script:
