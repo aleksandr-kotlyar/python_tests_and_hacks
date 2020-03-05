@@ -82,7 +82,7 @@ allure-reports:
       - allure-report
 
 pages:
-  image: ruby:2.7
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:latest
   stage: upload-allure-reports
   allow_failure: true
   before_script:
@@ -90,10 +90,8 @@ pages:
     - allure_path=${CI_COMMIT_REF_NAME}/${dt}_${CI_PIPELINE_ID}
     - mkdir ${CI_COMMIT_REF_NAME}
     - mkdir ${allure_path}
-    - mv allure-report ${allure_path}
   script:
-    - bundle install
-    - bundle exec jekyll build -d public/${allure_path}
+    - mv allure-report /public/${allure_path}
   artifacts:
     paths:
       - public
