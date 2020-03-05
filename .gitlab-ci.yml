@@ -20,6 +20,7 @@ variables:
   SLACK_TEXT_FINISH: 'Pipeline <$CI_PIPELINE_URL|$CI_PIPELINE_ID> _has finished_ *$CI_PIPELINE_SOURCE* job $CI_JOB_ID on *$ENVIRONMENT* _and generated_ *<$ALLURE_REPORTS_STORAGE/$CI_PROJECT_NAME/$ENVIRONMENT/$CI_COMMIT_REF_NAME/$CI_JOB_ID|Allure Reports>*'
 
 .linter_template:
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster
   stage: code_style
   only:
     refs:
@@ -33,7 +34,6 @@ variables:
     - gitlab-org
 
 Pylint:
-  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster
   allow_failure: true
   extends: .linter_template
   script:
@@ -73,7 +73,7 @@ Pylint:
     - gitlab-org
 
 allure-reports:
-  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster
+  allow_failure: true
   stage: generate-reports
   script:
     - allure generate reports
