@@ -90,7 +90,6 @@ pages:
   before_script:
     - dt=$(date +%F)
     - allure_path=${CI_COMMIT_REF_NAME}/${dt}_${CI_PIPELINE_ID}
-    - mkdir public
     - mkdir public/${CI_COMMIT_REF_NAME}
     - mkdir public/${allure_path}
   script:
